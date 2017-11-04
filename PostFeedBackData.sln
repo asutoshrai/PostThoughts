@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2006
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostFeedBackData", "PostFeedBackData\PostFeedBackData.csproj", "{A5CE8397-BAD9-4E9E-B61B-2505BD9971A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIService", "APIService\APIService.csproj", "{1E12A972-11FF-4EA9-A8ED-E673E27271AA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5CE8397-BAD9-4E9E-B61B-2505BD9971A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5CE8397-BAD9-4E9E-B61B-2505BD9971A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5CE8397-BAD9-4E9E-B61B-2505BD9971A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5CE8397-BAD9-4E9E-B61B-2505BD9971A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E12A972-11FF-4EA9-A8ED-E673E27271AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E12A972-11FF-4EA9-A8ED-E673E27271AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E12A972-11FF-4EA9-A8ED-E673E27271AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E12A972-11FF-4EA9-A8ED-E673E27271AA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EE82F5AF-F2A3-4A8F-97DE-D74A99573DEF}
+	EndGlobalSection
+EndGlobal
