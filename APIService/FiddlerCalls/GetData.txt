@@ -1,0 +1,20 @@
+GET http://localhost:11583/api/feedback/ HTTP/1.1
+User-Agent: Fiddler
+Host: localhost:11583
+Content-Length: 0
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Cache-Control: no-cache
+Pragma: no-cache
+Content-Type: application/json; charset=utf-8
+Expires: -1
+Server: Microsoft-IIS/10.0
+X-AspNet-Version: 4.0.30319
+X-SourceFiles: =?UTF-8?B?RTpcRGV2ZWxvcG1lbnRcUG9zdEZlZWRCYWNrRGF0YVxBUElTZXJ2aWNlXGFwaVxmZWVkYmFja1w=?=
+X-Powered-By: ASP.NET
+Date: Sat, 04 Nov 2017 20:58:20 GMT
+Content-Length: 304
+
+[{"Id":1,"Data":"This is very very lengthy paragraph. This is how you deal with the stories and paragraphs","UserId":"053bc4ce-926e-4eda-ab4b-611697103f0f","CreatedOn":"0001-01-01T00:00:00"},{"Id":2,"Data":"What is this","UserId":"053bc4ce-926e-4eda-ab4b-611697103f0f","CreatedOn":"0001-01-01T00:00:00"}]

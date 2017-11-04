@@ -1,0 +1,20 @@
+POST http://localhost:11583/token HTTP/1.1
+User-Agent: Fiddler
+Host: localhost:11583
+Content-Length: 58
+
+grant_type=password&username=abc@abc.com&password=Asdf123#
+
+HTTP/1.1 200 OK
+Cache-Control: no-cache
+Pragma: no-cache
+Content-Type: application/json;charset=UTF-8
+Expires: -1
+Server: Microsoft-IIS/10.0
+Set-Cookie: .AspNet.Cookies=yaLkv9Of65g8AWvkSK09xaNDNFnqG9vhlisdbMZOYRo4bxF04VN72Yt8Sst9wQLeDO9g1UR2F0kNbcZXvBZ5706e5PMIC91bowxO_eSVLt60cgG4FNu_H2zWOD66FoAQyy0LqUuHnwbTHHBfOfI3uoTs4gulXX7dLi_Njkf62gXCOE81pEpjQCFIYFri5s2zgKI2F_mJKmxfLqGib3leBUyh9NhJyyFZ3zD8QuZvbKaWO2LKsgi_Q-YRPXGSgH5ISl8YYRpv4Bb_1c13RlDJWnu8gX3-geKmF76tyNOUHBgww_YAsSFpVYI0XI6rQbYODbfRwAE4fxu3NO4eLH2kbynUSQ6l6kvAztNMareWUbLtF4tHW6Ej-Ebk2sjMDhbYPd4d_gTyZWWmwa4sEOxRFbDjxmZVhgaiBU8cvCOXqTiptnkuHGyQGw781n7xZCTk42k_k1IxSG1B4ikOR4CObmPoWnFA4b3SMuCk_0wAuHg; path=/; HttpOnly
+X-SourceFiles: =?UTF-8?B?RTpcRGV2ZWxvcG1lbnRcUG9zdEZlZWRCYWNrRGF0YVxBUElTZXJ2aWNlXHRva2Vu?=
+X-Powered-By: ASP.NET
+Date: Sat, 04 Nov 2017 18:57:34 GMT
+Content-Length: 663
+
+{"access_token":"XIl9BLGWUxEDYbMqHbAKuZDoSsGFnEcx5WTU7f2sdcRMVsnyC8UrbkIat377uLwgGdoO2ZDaih-Ed89ayYmfEGxPXeick3-9-gPN6lLBOBtrdCkOEQBel_iwsN6uabwHdbPZTxyaj8RQr5j0KzfnWYW-b_mA25uAolB3DjrcmIqhODdu_cu-ddQRJIBJf8KPUJTl_Tk3cavh-IYdJHfuHuTvSVXaOqe7yXB3m3mG3eA3qLj8StQHroBnfiD9qo5EI8FtgtPkUGDL8ut63xfxd_EbbflNBSAw2jd7OG0LpKKdGhhKOg_5wPt4tzETwTUJoBjDYxX0dCVOQ7lZJFTEEOBjx5SPPrnRH2HNxJaMgAeQ4gMrC4WVlVtT2LsUu92O8_MFacZ32ooMq5vDSil9IuRnTYu7EpOlgaSD0VLb_aAhNGLmo860DkYTyFKrIjPTglbgLffkoVeMU0iBYbJJRo_R6qN01vsvoKmM0TsvY7w","token_type":"bearer","expires_in":1209599,"userName":"abc@abc.com",".issued":"Sat, 04 Nov 2017 18:56:33 GMT",".expires":"Sat, 18 Nov 2017 18:56:33 GMT"}

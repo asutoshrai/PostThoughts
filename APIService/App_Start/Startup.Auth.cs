@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using APIService.Providers;
 using APIService.Models;
+using APIService.Persistence;
 
 namespace APIService
 {
