@@ -25,11 +25,11 @@ export class RegisterComponent {
                     this.alertService.success('Registration successful', true);
                     this.router.navigate(['/login']);
                 },
-                (err) => {
+                (error) => {
                     let errormessage='';
-                    if (err.status === 400) {
+                    if (error.status === 400) {
                         // handle validation error
-                        let validationErrorDictionary = JSON.parse(err.text());
+                        let validationErrorDictionary = JSON.parse(error.text());
                         for (var fieldName in validationErrorDictionary) {
                             if (validationErrorDictionary.hasOwnProperty(fieldName)) {
                                 errormessage+=validationErrorDictionary[fieldName]+"\n";

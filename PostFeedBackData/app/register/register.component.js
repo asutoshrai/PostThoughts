@@ -26,11 +26,11 @@ var RegisterComponent = (function () {
             .subscribe(function (data) {
             _this.alertService.success('Registration successful', true);
             _this.router.navigate(['/login']);
-        }, function (err) {
+        }, function (error) {
             var errormessage = '';
-            if (err.status === 400) {
+            if (error.status === 400) {
                 // handle validation error
-                var validationErrorDictionary = JSON.parse(err.text());
+                var validationErrorDictionary = JSON.parse(error.text());
                 for (var fieldName in validationErrorDictionary) {
                     if (validationErrorDictionary.hasOwnProperty(fieldName)) {
                         errormessage += validationErrorDictionary[fieldName] + "\n";
