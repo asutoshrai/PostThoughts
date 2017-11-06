@@ -26,9 +26,23 @@ var RegisterComponent = (function () {
             .subscribe(function (data) {
             _this.alertService.success('Registration successful', true);
             _this.router.navigate(['/login']);
-        }, function (error) {
-            _this.alertService.error(error);
-            _this.loading = false;
+        }, function (err) {
+            var errormessage = '';
+            if (err.status === 400) {
+                // handle validation error
+                var validationErrorDictionary = JSON.parse(err.text());
+                for (var fieldName in validationErrorDictionary) {
+                    if (validationErrorDictionary.hasOwnProperty(fieldName)) {
+                        errormessage += validationErrorDictionary[fieldName] + "\n";
+                    }
+                    _this.alertService.error(errormessage);
+                    _this.loading = false;
+                }
+            }
+            else {
+                _this.alertService.error(errormessage);
+                _this.loading = false;
+            }
         });
     };
     return RegisterComponent;

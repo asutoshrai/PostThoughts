@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
+using System.Net.Http.Formatting;
 
 namespace APIService
 {
@@ -16,6 +17,9 @@ namespace APIService
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+
+            var formatter = new JsonMediaTypeFormatter();
+            config.Formatters.Insert(0, formatter);
 
             // Web API routes
             config.MapHttpAttributeRoutes();

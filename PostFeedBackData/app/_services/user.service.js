@@ -14,20 +14,12 @@ var UserService = (function () {
     function UserService(http) {
         this.http = http;
     }
-    UserService.prototype.getAll = function () {
-        return this.http.get('/api/users', this.jwt()).map(function (response) { return response.json(); });
-    };
-    UserService.prototype.getById = function (id) {
-        return this.http.get('/api/users/' + id, this.jwt()).map(function (response) { return response.json(); });
-    };
     UserService.prototype.create = function (user) {
-        return this.http.post('/api/users', user, this.jwt()).map(function (response) { return response.json(); });
-    };
-    UserService.prototype.update = function (user) {
-        return this.http.put('/api/users/' + user.id, user, this.jwt()).map(function (response) { return response.json(); });
-    };
-    UserService.prototype.delete = function (id) {
-        return this.http.delete('/api/users/' + id, this.jwt()).map(function (response) { return response.json(); });
+        var body = { 'Email': '' + user.email + '', 'Password': '' + user.password + '', 'ConfirmPassword': '' + user.confirmPassword + '' };
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post('http://localhost:11583/api/account/register', body, options)
+            .map(function (response) { return response.json(); });
     };
     // private helper methods
     UserService.prototype.jwt = function () {

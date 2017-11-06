@@ -13,20 +13,8 @@ var index_1 = require("../_services/index");
 var HomeComponent = (function () {
     function HomeComponent(userService) {
         this.userService = userService;
-        this.users = [];
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
-    HomeComponent.prototype.ngOnInit = function () {
-        this.loadAllUsers();
-    };
-    HomeComponent.prototype.deleteUser = function (id) {
-        var _this = this;
-        this.userService.delete(id).subscribe(function () { _this.loadAllUsers(); });
-    };
-    HomeComponent.prototype.loadAllUsers = function () {
-        var _this = this;
-        this.userService.getAll().subscribe(function (users) { _this.users = users; });
-    };
     return HomeComponent;
 }());
 HomeComponent = __decorate([

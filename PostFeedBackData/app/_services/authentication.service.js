@@ -16,12 +16,16 @@ var AuthenticationService = (function () {
         this.http = http;
     }
     AuthenticationService.prototype.login = function (username, password) {
-        return this.http.post('/api/authenticate', JSON.stringify({ username: username, password: password }))
+        var url = "http://localhost:11583/token";
+        var body = "username=" + username + "&password=" + password + "&grant_type=password";
+        var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post(url, body, options)
             .map(function (response) {
-            // login successful if there's a jwt token in the response
+            // login successful if there's a brearer token in the response
             var user = response.json();
-            if (user && user.token) {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
+            if (user && user.access_token) {
+                // store user details and bearer token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
             }
         });

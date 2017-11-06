@@ -1,7 +1,10 @@
 export class User {
-    id: number;
-    username: string;
+    email: string;
     password: string;
-    firstName: string;
-    lastName: string;
+    confirmPassword: string;
+}
+
+export class CurrentUser {
+   userName:string;
+   access_token:string;
 }

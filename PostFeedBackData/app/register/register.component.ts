@@ -25,9 +25,23 @@ export class RegisterComponent {
                     this.alertService.success('Registration successful', true);
                     this.router.navigate(['/login']);
                 },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
+                (err) => {
+                    let errormessage='';
+                    if (err.status === 400) {
+                        // handle validation error
+                        let validationErrorDictionary = JSON.parse(err.text());
+                        for (var fieldName in validationErrorDictionary) {
+                            if (validationErrorDictionary.hasOwnProperty(fieldName)) {
+                                errormessage+=validationErrorDictionary[fieldName]+"\n";
+                            }
+                            this.alertService.error(errormessage);
+                            this.loading = false;
+                        }
+                    } else {
+                        this.alertService.error(errormessage);
+                        this.loading = false;
+                    }
                 });
-    }
+
+            }
 }
