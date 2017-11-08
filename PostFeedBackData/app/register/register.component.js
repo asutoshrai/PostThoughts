@@ -30,10 +30,10 @@ var RegisterComponent = (function () {
             var errormessage = '';
             if (error.status === 400) {
                 // handle validation error
-                var validationErrorDictionary = JSON.parse(error.text());
-                for (var fieldName in validationErrorDictionary) {
-                    if (validationErrorDictionary.hasOwnProperty(fieldName)) {
-                        errormessage += validationErrorDictionary[fieldName] + "\n";
+                var body = JSON.parse(error._body).ModelState;
+                for (var key in body) {
+                    for (var i = 0; i < body[key].length; i++) {
+                        errormessage += body[key][i];
                     }
                     _this.alertService.error(errormessage);
                     _this.loading = false;

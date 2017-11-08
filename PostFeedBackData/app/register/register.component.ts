@@ -29,10 +29,10 @@ export class RegisterComponent {
                     let errormessage='';
                     if (error.status === 400) {
                         // handle validation error
-                        let validationErrorDictionary = JSON.parse(error.text());
-                        for (var fieldName in validationErrorDictionary) {
-                            if (validationErrorDictionary.hasOwnProperty(fieldName)) {
-                                errormessage+=validationErrorDictionary[fieldName]+"\n";
+                        let body = JSON.parse(error._body).ModelState;
+                        for (var key in body) {
+                            for (var i = 0; i < body[key].length; i++) {
+                                errormessage+=body[key][i];
                             }
                             this.alertService.error(errormessage);
                             this.loading = false;
