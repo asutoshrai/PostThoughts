@@ -15,11 +15,11 @@ var UserService = (function () {
         this.http = http;
     }
     UserService.prototype.create = function (user) {
-        var body = { 'Email': '' + user.email + '', 'Password': '' + user.password + '', 'ConfirmPassword': '' + user.confirmPassword + '' };
+        var body = user; // {'Email':''+user.email+'','Password':''+user.password+'','ConfirmPassword':''+user.confirmPassword+''}
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
         return this.http.post('http://localhost:11583/api/account/register', body, options)
-            .map(function (response) { return response.json(); });
+            .map(function (response) { return response; });
     };
     // private helper methods
     UserService.prototype.jwt = function () {

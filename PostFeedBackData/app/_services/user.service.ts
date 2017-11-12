@@ -8,12 +8,12 @@ export class UserService {
     constructor(private http: Http) { }
 
     create(user: User) {
-        let body={'Email':''+user.email+'','Password':''+user.password+'','ConfirmPassword':''+user.confirmPassword+''}
+        let body=user;// {'Email':''+user.email+'','Password':''+user.password+'','ConfirmPassword':''+user.confirmPassword+''}
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });        
 
         return this.http.post('http://localhost:11583/api/account/register', body, options)
-        .map((response: Response) => response.json());
+        .map((response: Response) => response);
     }
 
     // private helper methods

@@ -23,6 +23,11 @@ export class AlertService {
         });
     }
 
+    close():void{
+        // clear alert
+        this.subject.next();
+    }
+
     success(message: string, keepAfterNavigationChange = false) {
         this.keepAfterNavigationChange = keepAfterNavigationChange;
         this.subject.next({ type: 'success', text: message });

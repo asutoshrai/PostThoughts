@@ -33,8 +33,18 @@ var LoginComponent = (function () {
             .subscribe(function (data) {
             _this.router.navigate([_this.returnUrl]);
         }, function (error) {
-            _this.alertService.error(error);
-            _this.loading = false;
+            var errormessage = '';
+            if (error.status === 400) {
+                // handle validation error
+                var body = JSON.parse(error._body);
+                errormessage = body.error_description;
+                _this.alertService.error(errormessage);
+                _this.loading = false;
+            }
+            else {
+                _this.alertService.error(errormessage);
+                _this.loading = false;
+            }
         });
     };
     return LoginComponent;

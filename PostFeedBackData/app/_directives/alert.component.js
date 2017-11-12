@@ -14,6 +14,9 @@ var AlertComponent = (function () {
     function AlertComponent(alertService) {
         this.alertService = alertService;
     }
+    AlertComponent.prototype.close = function () {
+        this.alertService.close();
+    };
     AlertComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.alertService.getMessage().subscribe(function (message) { _this.message = message; });

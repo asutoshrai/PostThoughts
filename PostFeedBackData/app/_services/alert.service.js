@@ -31,6 +31,10 @@ var AlertService = (function () {
             }
         });
     }
+    AlertService.prototype.close = function () {
+        // clear alert
+        this.subject.next();
+    };
     AlertService.prototype.success = function (message, keepAfterNavigationChange) {
         if (keepAfterNavigationChange === void 0) { keepAfterNavigationChange = false; }
         this.keepAfterNavigationChange = keepAfterNavigationChange;
