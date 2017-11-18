@@ -38,7 +38,7 @@ export class RegisterComponent {
                             this.loading = false;
                         }
                     } else {
-                        this.alertService.error(errormessage);
+                        this.alertService.error('Something went wrong : '+errormessage);
                         this.loading = false;
                     }
                 });

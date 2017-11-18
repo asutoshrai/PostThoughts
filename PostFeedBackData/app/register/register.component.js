@@ -40,7 +40,7 @@ var RegisterComponent = (function () {
                 }
             }
             else {
-                _this.alertService.error(errormessage);
+                _this.alertService.error('Something went wrong : ' + errormessage);
                 _this.loading = false;
             }
         });

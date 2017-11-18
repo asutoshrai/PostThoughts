@@ -42,7 +42,7 @@ var LoginComponent = (function () {
                 _this.loading = false;
             }
             else {
-                _this.alertService.error(errormessage);
+                _this.alertService.error('Something went wrong : ' + errormessage);
                 _this.loading = false;
             }
         });
