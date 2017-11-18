@@ -30,6 +30,12 @@ var AuthenticationService = (function () {
             }
         });
     };
+    AuthenticationService.prototype.isLoggedIn = function () {
+        if (localStorage.getItem('currentUser'))
+            return true;
+        else
+            return false;
+    };
     AuthenticationService.prototype.logout = function () {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');

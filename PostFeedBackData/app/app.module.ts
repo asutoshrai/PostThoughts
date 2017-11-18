@@ -19,6 +19,7 @@ import { RegisterComponent } from './register/index';
 import { StoryComponent } from "./story/index";
 import { AboutComponent } from "./about/index";
 import { ContactComponent } from "./contact/index";
+import { StoryService } from "./_services/story.service";
 
 @NgModule({
     imports: [
@@ -42,9 +43,7 @@ import { ContactComponent } from "./contact/index";
         AlertService,
         AuthenticationService,
         UserService,
-
-        // providers used to create fake backend
-        //BaseRequestOptions
+        StoryService
     ],
     bootstrap: [AppComponent]
 })
