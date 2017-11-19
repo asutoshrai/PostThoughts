@@ -16,9 +16,7 @@ var AppComponent = (function () {
         this.auth = auth;
         this.router = router;
         this.userService = userService;
-        this.loggedIn = false;
-        this.loggedIn = this.auth.isLoggedIn();
-        if (this.loggedIn) {
+        if (auth.isLoggedIn()) {
             this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         }
     }

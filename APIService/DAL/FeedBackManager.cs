@@ -20,7 +20,7 @@ namespace APIService.DAL
         {
             using (_context)
             {
-                return _context.FeedBacks.ToList();
+                return _context.FeedBacks.OrderByDescending(x=>x.CreatedOn).ToList();
             }
         }
 

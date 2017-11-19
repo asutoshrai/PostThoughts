@@ -18,6 +18,15 @@ export class StoryService {
         .map((response: Response) => response);
     }
 
+    getStories(){
+        let body={};
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = this.tokenHeader();        
+
+        return this.http.get('http://localhost:11583/api/feedback/', options)
+        .map((response:Response)=><Story[]>response.json())
+    }
+
     // private helper methods
 
     private tokenHeader() {

@@ -1,1 +1,10 @@
-THIS IS HOME PAGE
+<div class="col-md-12">
+ 
+    <h1>Stories</h1>
+    <h6 style="margin-bottom:30px;">What other says...</h6>
+
+   <div class="jumbotron" *ngFor="let story of stories">
+   <p>{{story.Data}}</p>
+   <div style="font-style:italic;"><span style="font-weight:bold;"> Posted by :</span> {{story.UserId}} on {{story.CreatedOn}} </div>
+   </div>
+</div>

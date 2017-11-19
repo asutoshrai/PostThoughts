@@ -23,6 +23,13 @@ var StoryService = (function () {
         return this.http.post('http://localhost:11583/api/feedback/', body, options)
             .map(function (response) { return response; });
     };
+    StoryService.prototype.getStories = function () {
+        var body = {};
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = this.tokenHeader();
+        return this.http.get('http://localhost:11583/api/feedback/', options)
+            .map(function (response) { return response.json(); });
+    };
     // private helper methods
     StoryService.prototype.tokenHeader = function () {
         // create authorization header with jwt token

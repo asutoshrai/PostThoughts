@@ -36,6 +36,14 @@ var AuthenticationService = (function () {
         else
             return false;
     };
+    AuthenticationService.prototype.getUserName = function () {
+        if (localStorage.getItem('currentUser')) {
+            return JSON.parse(localStorage.getItem('currentUser')).userName;
+        }
+        else {
+            return "Guest";
+        }
+    };
     AuthenticationService.prototype.logout = function () {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');

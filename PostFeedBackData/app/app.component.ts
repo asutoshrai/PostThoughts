@@ -10,12 +10,10 @@ import { CurrentUser } from "./_models/index";
 })
 
 export class AppComponent {
-    loggedIn = false;
     currentUser: CurrentUser;
   
     constructor(private auth: AuthenticationService, private router: Router,private userService: UserService) {
-      this.loggedIn = this.auth.isLoggedIn();
-      if(this.loggedIn){
+      if(auth.isLoggedIn()){
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));}
     }
   
