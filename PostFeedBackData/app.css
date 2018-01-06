@@ -12,6 +12,13 @@ a {
     background-repeat: no-repeat;
     background-color: #d3d3d3;
     font-family: 'Oxygen', sans-serif;
+    color: white;
+    background-image: url("app/imgs/kid4.jpeg");
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
 }
 
 .main{
@@ -77,10 +84,13 @@ input::-webkit-input-placeholder {
     background-color: #3c3d41;
 	padding: 60px 40px;
 	color: rgba(255,255,255,1.00);
-	margin-bottom: 20px;
 	border-bottom-right-radius: 6px;
 	border-top-left-radius: 0px;
-	border-bottom-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    width:100%;
+    position: relative;
+    left: 0;
+    bottom: 0; 
 }
 .footer-bs .footer-brand, .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { padding:10px 25px; }
 .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-color: transparent; }
@@ -133,4 +143,17 @@ input::-webkit-input-placeholder {
  
  .nav.center ul li {
     display: inline-block;
+ }
+
+ links{
+     color: white;
+ }
+ 
+ btnRed{
+     background-color: darkgrey;
+     color: black;
+ }
+
+ .jumbotron{
+     color: black;
  }
