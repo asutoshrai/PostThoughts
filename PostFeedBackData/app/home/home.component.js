@@ -11,16 +11,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var story_service_1 = require("../_services/story.service");
 var index_1 = require("../_services/index");
+var index_2 = require("../_services/index");
 var HomeComponent = (function () {
-    function HomeComponent(storyService, alertService) {
+    function HomeComponent(storyService, alertService, pagerService) {
         this.storyService = storyService;
         this.alertService = alertService;
+        this.pagerService = pagerService;
+        // pager object
+        this.pager = {};
     }
     HomeComponent.prototype.ngOnInit = function () {
+        this.setPage(1);
+    };
+    HomeComponent.prototype.setPage = function (page) {
+        if (page < 1 || page > this.pager.totalPages) {
+            return;
+        }
+        // get pager object from service
+        this.assignStories(page, 5);
+        // this.pager = this.pagerService.getPager(this.allItems, page,5);
+    };
+    HomeComponent.prototype.assignStories = function (currentPage, pageSize) {
         var _this = this;
-        this.storyService.getStories()
-            .subscribe(function (stories) {
-            _this.stories = stories;
+        this.storyService.getStories(currentPage, pageSize)
+            .subscribe(function (story) {
+            _this.pagedItems = story.stories;
+            _this.allItems = story.totalCount;
+            _this.pager = _this.pagerService.getPager(_this.allItems, currentPage, 5);
         }, function (error) {
             var errormessage = '';
             if (error.status === 400) {
@@ -46,7 +63,8 @@ HomeComponent = __decorate([
         templateUrl: 'home.component.html'
     }),
     __metadata("design:paramtypes", [story_service_1.StoryService,
-        index_1.AlertService])
+        index_1.AlertService,
+        index_2.PagerService])
 ], HomeComponent);
 exports.HomeComponent = HomeComponent;
 //# sourceMappingURL=home.component.js.map

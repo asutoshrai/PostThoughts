@@ -24,6 +24,7 @@ var index_7 = require("./story/index");
 var index_8 = require("./about/index");
 var index_9 = require("./contact/index");
 var story_service_1 = require("./_services/story.service");
+var pager_service_1 = require("./_services/pager.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -52,7 +53,8 @@ AppModule = __decorate([
             index_3.AlertService,
             index_3.AuthenticationService,
             index_3.UserService,
-            story_service_1.StoryService
+            story_service_1.StoryService,
+            pager_service_1.PagerService
         ],
         bootstrap: [app_component_1.AppComponent]
     })

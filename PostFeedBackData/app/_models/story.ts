@@ -3,3 +3,9 @@ export class Story{
     public userId:string;
     public createdOn:Date;
 }
+
+
+export class StoryModel{
+    public stories:Story[];
+    public totalCount:number;
+}

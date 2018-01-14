@@ -20,14 +20,14 @@ var StoryService = (function () {
         var body = { 'Data': '' + story.data + '', 'UserId': '' + userId + '', 'CreatedOn': '' + currentDate + '' };
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = this.tokenHeader();
-        return this.http.post('http://localhost:11583/api/feedback/', body, options)
+        return this.http.post('http://localhost:11583/api/feedback', body, options)
             .map(function (response) { return response; });
     };
-    StoryService.prototype.getStories = function () {
+    StoryService.prototype.getStories = function (currentPage, pageSize) {
         var body = {};
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = this.tokenHeader();
-        return this.http.get('http://localhost:11583/api/feedback/', options)
+        return this.http.get('http://localhost:11583/api/feedback?currentPage=' + currentPage + '&maxItems=' + pageSize + '', options)
             .map(function (response) { return response.json(); });
     };
     // private helper methods

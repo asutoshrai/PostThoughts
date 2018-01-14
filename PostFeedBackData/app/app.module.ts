@@ -20,6 +20,7 @@ import { StoryComponent } from "./story/index";
 import { AboutComponent } from "./about/index";
 import { ContactComponent } from "./contact/index";
 import { StoryService } from "./_services/story.service";
+import { PagerService } from './_services/pager.service';
 
 @NgModule({
     imports: [
@@ -43,7 +44,8 @@ import { StoryService } from "./_services/story.service";
         AlertService,
         AuthenticationService,
         UserService,
-        StoryService
+        StoryService,
+        PagerService
     ],
     bootstrap: [AppComponent]
 })

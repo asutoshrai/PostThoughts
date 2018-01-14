@@ -2,6 +2,7 @@
 using APIService.Domain;
 using System.Web.Http;
 using System;
+using APIService.Models;
 
 namespace APIService.Controllers
 {
@@ -17,7 +18,10 @@ namespace APIService.Controllers
         [HttpGet]
         public IHttpActionResult Get()
         {
-          return Ok(_mgr.GetFeedBacks());
+            var pairs = this.Request.GetQueryStrings();
+            int currentPage = Convert.ToInt32(pairs["currentPage"]);
+            int pageSize = Convert.ToInt32(pairs["maxItems"]);
+            return Ok(_mgr.GetFeedBacks(currentPage, pageSize));
         }
 
         [HttpPost]
