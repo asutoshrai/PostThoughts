@@ -158,12 +158,102 @@ input::-webkit-input-placeholder {
      color: black;
  }
 
- .pagination li a:first-child {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+ /*Pagination*/
+ .pagination li a{
+   height: 10px;
+   width: 10px;
+   background-color:#DE1B1B;
+   color:white;
+   margin-left: 5px;
+   padding: 5px;
+   border-radius: 20%;
+   border-color:white;
+   border-width: 2px;
 }
 
-.pagination li a:last-child {
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
+.pagination li a.active{
+    height: 10px;
+    width: 10px;
+    background-color: black;
+    color: white;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 20%;
+    border-color:white;
+    border-width: 2px;
+ }
+
+ .pagination li a.disabled{
+    height: 10px;
+    width: 10px;
+    background-color:#DE1B1B;
+    color: darkgray;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 20%;
+    border-color:white;
+    border-width: 2px;
+ }
+
+/*rounded corner articles with folded corner */
+.ribbon {
+   fill: rgba(20, 235, 206, 0.726);
+    position: relative;
+    line-height: 40px;
+    padding: 20px 20px;
+    font-family: helvetica;
+    color: rgb(48, 46, 46);
+    font-weight: 100;
+    margin-bottom: 20px;
+    background-color: rgba(20, 235, 206, 0.726);
+  border-radius: 2%;
+  }
+  
+  .fold {
+    position: absolute;
+    border-style: solid;
+  }
+  .fold.top {
+    top: 0;
+  }
+  .fold.top.left {
+    left: 0;
+    border-width: 12px 12px 0  0;
+    border-color: #EEEBDC rgba(20, 235, 206, 0.726); #EEEBDC #EEEBDC;
+  }
+  .fold.top.right {
+    right: 0;
+    border-width: 0 12px 12px  0;
+    border-color: #EEEBDC #EEEBDC rgba(20, 235, 206, 0.726) #EEEBDC;
+  }
+  .fold.bottom {
+    bottom: 0;
+  }
+  .fold.bottom.left {
+    left: 0;
+    border-width: 0 12px 12px 0;
+    border-color: #EEEBDC rgba(20, 235, 206, 0.726) #EEEBDC #EEEBDC;
+  }
+  .fold.bottom.right {
+    right: 0;
+    border-width: 12px 12px 0  0;
+    border-color: rgba(20, 235, 206, 0.726) #EEEBDC #EEEBDC #EEEBDC;
+  }
+  
+  /***
+  * The below css is only used to 
+  * style this example and is not 
+  * needed outside of this demo
+  * https://codepen.io/Presto/pen/Ajkte
+  ***/
+  body {
+    background-color: #EEEBDC;
+    padding: 25px;
+  }
+  
+  h1 {
+    font-family: "Helvetica Neue", "HelveticaNeue-Light", "Helvetica Neue Light", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 200;
+  }
+  
+
