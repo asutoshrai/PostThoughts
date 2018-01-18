@@ -62,7 +62,10 @@ namespace APIService.Controllers
             {
                 Email = User.Identity.GetUserName(),
                 HasRegistered = externalLogin == null,
-                LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
+                LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null,
+                FirstName=User.Identity.GetUserFirstName(),
+                LastName= User.Identity.GetUserFirstName(),
+                SchoolName = User.Identity.GetUserFirstName()
             };
         }
 
@@ -328,7 +331,16 @@ namespace APIService.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() {
+                UserName = model.Email,
+                Email = model.Email,
+                UserInfo =new Domain.UserInfo
+                    {
+                        FirstName =model.FirstName,
+                        LastName=model.LastName,
+                        SchoolName=model.SchoolName
+                    }
+            };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 

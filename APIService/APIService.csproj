@@ -201,6 +201,7 @@
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="DAL\FeedBackManager.cs" />
     <Compile Include="Domain\Feedback.cs" />
+    <Compile Include="Domain\UserInfo.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
