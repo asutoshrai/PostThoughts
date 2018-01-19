@@ -3,6 +3,7 @@ using APIService.Domain;
 using System.Web.Http;
 using System;
 using APIService.Models;
+using APIService.Extensions;
 
 namespace APIService.Controllers
 {
@@ -28,6 +29,7 @@ namespace APIService.Controllers
         public IHttpActionResult Post(FeedBack feedBack)
         {
             feedBack.CreatedOn = DateTime.Now;
+            feedBack.IPAddress = this.GetIPAddress();
             _mgr.AddFeedBack(feedBack);
             return Ok();
         }

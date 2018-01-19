@@ -25,7 +25,7 @@
    <div class="jumbotron ribbon" *ngFor="let story of pagedItems">
         <span class="fold bottom right"></span>
    <p>{{story.Data}}</p>
-   <div style="font-style:italic;"><span style="font-weight:bold;"> Posted by :</span> {{story.UserId}} on {{story.CreatedOn}} </div>
+   <div style="font-style:italic;"><span style="font-weight:bold;"> Posted by : </span> {{story.UserId}} <span style="font-weight:bold;"> Created On : </span> {{story.CreatedOn}} <span style="font-weight:bold;"> IP :</span> {{story.IPAddress}} </div>
    </div>
 
      <!-- pager -->

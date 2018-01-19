@@ -7,6 +7,7 @@ namespace APIService.Domain
         public int Id { get; set; }
         public string Data { get; set; }
         public string UserId { get; set; }
+        public string IPAddress { get; set; }
         public DateTime CreatedOn { get; set; }
     }
 }

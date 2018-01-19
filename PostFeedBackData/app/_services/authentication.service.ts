@@ -32,7 +32,7 @@ export class AuthenticationService {
 
     getUserName(){
         if(localStorage.getItem('currentUser')) 
-            { return JSON.parse(localStorage.getItem('currentUser')).userName;}
+            { return JSON.parse(localStorage.getItem('currentUser')).firstName+' '+JSON.parse(localStorage.getItem('currentUser')).lastName ;}
         else{
 return "Guest";
         }

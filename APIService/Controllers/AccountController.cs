@@ -16,6 +16,7 @@ using Microsoft.Owin.Security.OAuth;
 using APIService.Models;
 using APIService.Providers;
 using APIService.Results;
+using APIService.Extensions;
 
 namespace APIService.Controllers
 {
@@ -267,7 +268,7 @@ namespace APIService.Controllers
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
-                AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user.UserName);
+                AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user.UserName,user.UserInfo.FirstName, user.UserInfo.LastName, user.UserInfo.SchoolName);
                 Authentication.SignIn(properties, oAuthIdentity, cookieIdentity);
             }
             else
