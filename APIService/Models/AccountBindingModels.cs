@@ -110,4 +110,10 @@ namespace APIService.Models
         public string UserId { get; set; }
         public string Password { get; set; }
     }
+
+    public class CofirmEmailModel
+    {
+        public string Code { get; set; }
+        public string UserId { get; set; }
+    }
 }

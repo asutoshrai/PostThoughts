@@ -27,6 +27,7 @@ var index_10 = require("./forgotpassword/index");
 var story_service_1 = require("./_services/story.service");
 var pager_service_1 = require("./_services/pager.service");
 var index_11 = require("./resetpassword/index");
+var index_12 = require("./confirmemail/index");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -50,7 +51,8 @@ AppModule = __decorate([
             index_8.AboutComponent,
             index_9.ContactComponent,
             index_10.ForgotPasswordComponent,
-            index_11.ResetPasswordComponent
+            index_11.ResetPasswordComponent,
+            index_12.ConfirmEmailComponent
         ],
         providers: [
             index_2.AuthGuard,

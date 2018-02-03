@@ -35,6 +35,13 @@ var UserService = (function () {
         return this.http.post('http://localhost:11583/api/account/ResetPassword', body, options)
             .map(function (response) { return response; });
     };
+    UserService.prototype.confirmEmail = function (userid, code) {
+        var body = { 'UserId': '' + userid + '', 'Code': '' + code + '' };
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post('http://localhost:11583/api/account/ConfirmEmail', body, options)
+            .map(function (response) { return response; });
+    };
     // private helper methods
     UserService.prototype.jwt = function () {
         // create authorization header with jwt token

@@ -9,6 +9,7 @@ import { ContactComponent } from "./contact/index";
 import { AboutComponent } from "./about/index";
 import { ForgotPasswordComponent } from './forgotpassword/index';
 import { ResetPasswordComponent } from './resetpassword/index';
+import { ConfirmEmailComponent } from './confirmemail/index';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
     { path: 'contact', component: ContactComponent },
     { path: 'forgotpassword', component: ForgotPasswordComponent },
     { path: 'resetpassword', component: ResetPasswordComponent },
+    { path: 'confirmemail', component: ConfirmEmailComponent },
     { path: 'story', component: StoryComponent, canActivate: [AuthGuard] },
 
     // otherwise redirect to home

@@ -23,6 +23,7 @@ import { ForgotPasswordComponent } from "./forgotpassword/index";
 import { StoryService } from "./_services/story.service";
 import { PagerService } from './_services/pager.service';
 import { ResetPasswordComponent } from './resetpassword/index';
+import { ConfirmEmailComponent } from './confirmemail/index';
 
 @NgModule({
     imports: [
@@ -41,7 +42,8 @@ import { ResetPasswordComponent } from './resetpassword/index';
         AboutComponent,
         ContactComponent,
         ForgotPasswordComponent,
-        ResetPasswordComponent
+        ResetPasswordComponent,
+        ConfirmEmailComponent
     ],
     providers: [
         AuthGuard,

@@ -348,6 +348,20 @@ namespace APIService.Controllers
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
+            if (result.Succeeded)
+            {
+                var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+
+                var baseUrl = ConfigurationManager.AppSettings["baseUrl"];
+
+                if (string.IsNullOrEmpty(baseUrl))
+                    return Ok();
+
+                var callbackUrl = baseUrl + "/confirmemail?userid=" + user.Id + "&code=" + code;
+                await UserManager.SendEmailAsync(user.Id, "Email Confirmation",
+            "Please confirm your account by clicking this link: <a href=\""+ callbackUrl + "\">link</a>");
+            }
+
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -356,18 +370,22 @@ namespace APIService.Controllers
             return Ok();
         }
 
-
-        // POST api/Account/Register
+        [HttpPost]
         [AllowAnonymous]
-        [Route("CheckUser")]
-        public async Task<IHttpActionResult> CheckUser(string userId)
+        public async Task<IHttpActionResult> ConfirmEmail(CofirmEmailModel model)
         {
-            var result = await UserManager.FindByEmailAsync(userId);
+            if (model.UserId == null || model.Code == null)
+            {
+                return BadRequest();
+            }
+            var result = await UserManager.ConfirmEmailAsync(model.UserId, model.Code);
+            if (result.Succeeded)
+            {
+                return Ok("Email confirmed!");
+            }
 
-            if (result != null)
-                return Json(true);
-
-            return Json(false);
+            return Ok();
+           
         }
 
         [HttpPost]
@@ -378,18 +396,11 @@ namespace APIService.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindByNameAsync(model.Email);
-                // If user has to activate his email to confirm his account, the use code listing below
-                //if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
-                //{
-                //    return Ok();
-                //}
                 if (user == null)
                 {
                     return Ok();
                 }
 
-                // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                // Send an email with this link
                 var code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
 
                 var baseUrl = ConfigurationManager.AppSettings["baseUrl"];

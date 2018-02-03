@@ -39,6 +39,12 @@ namespace APIService.Providers
                 return;
             }
 
+            if (!user.EmailConfirmed)
+            {
+                context.SetError("invalid_grant", "Email is not confirmed");
+                return;
+            }
+
 
             ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(userManager,
                OAuthDefaults.AuthenticationType);

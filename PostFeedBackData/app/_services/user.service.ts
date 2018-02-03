@@ -34,6 +34,15 @@ export class UserService {
         .map((response: Response) => response);
     }
 
+    confirmEmail(userid:string,code:string) {
+        let body= {'UserId':''+userid+'','Code':''+code+''};
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });        
+
+        return this.http.post('http://localhost:11583/api/account/ConfirmEmail', body, options)
+        .map((response: Response) => response);
+    }
+
     // private helper methods
 
     private jwt() {
