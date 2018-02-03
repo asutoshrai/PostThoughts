@@ -207,6 +207,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\EmailNotification.cs" />
     <Compile Include="Migrations\201711042054370_InitialCreate.cs" />
     <Compile Include="Migrations\201711042054370_InitialCreate.Designer.cs">
       <DependentUpon>201711042054370_InitialCreate.cs</DependentUpon>

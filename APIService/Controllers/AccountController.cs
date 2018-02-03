@@ -17,6 +17,8 @@ using APIService.Models;
 using APIService.Providers;
 using APIService.Results;
 using APIService.Extensions;
+using APIService.Infrastructure;
+using System.Configuration;
 
 namespace APIService.Controllers
 {
@@ -64,8 +66,8 @@ namespace APIService.Controllers
                 Email = User.Identity.GetUserName(),
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null,
-                FirstName=User.Identity.GetUserFirstName(),
-                LastName= User.Identity.GetUserFirstName(),
+                FirstName = User.Identity.GetUserFirstName(),
+                LastName = User.Identity.GetUserFirstName(),
                 SchoolName = User.Identity.GetUserFirstName()
             };
         }
@@ -129,7 +131,7 @@ namespace APIService.Controllers
 
             IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
                 model.NewPassword);
-            
+
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -262,13 +264,13 @@ namespace APIService.Controllers
             if (hasRegistered)
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-                
-                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                    OAuthDefaults.AuthenticationType);
+
+                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
+                   OAuthDefaults.AuthenticationType);
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
-                AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user.UserName,user.UserInfo.FirstName, user.UserInfo.LastName, user.UserInfo.SchoolName);
+                AuthenticationProperties properties = ApplicationOAuthProvider.CreateProperties(user.UserName, user.UserInfo.FirstName, user.UserInfo.LastName, user.UserInfo.SchoolName);
                 Authentication.SignIn(properties, oAuthIdentity, cookieIdentity);
             }
             else
@@ -332,15 +334,16 @@ namespace APIService.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() {
+            var user = new ApplicationUser()
+            {
                 UserName = model.Email,
                 Email = model.Email,
-                UserInfo =new Domain.UserInfo
-                    {
-                        FirstName =model.FirstName,
-                        LastName=model.LastName,
-                        SchoolName=model.SchoolName
-                    }
+                UserInfo = new Domain.UserInfo
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    SchoolName = model.SchoolName
+                }
             };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
@@ -352,6 +355,83 @@ namespace APIService.Controllers
 
             return Ok();
         }
+
+
+        // POST api/Account/Register
+        [AllowAnonymous]
+        [Route("CheckUser")]
+        public async Task<IHttpActionResult> CheckUser(string userId)
+        {
+            var result = await UserManager.FindByEmailAsync(userId);
+
+            if (result != null)
+                return Json(true);
+
+            return Json(false);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("ForgotPassword")]
+        public async Task<IHttpActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByNameAsync(model.Email);
+                // If user has to activate his email to confirm his account, the use code listing below
+                //if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                //{
+                //    return Ok();
+                //}
+                if (user == null)
+                {
+                    return Ok();
+                }
+
+                // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                // Send an email with this link
+                var code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+
+                var baseUrl = ConfigurationManager.AppSettings["baseUrl"];
+
+                if (string.IsNullOrEmpty(baseUrl))
+                    return Ok();
+
+                var callbackUrl = baseUrl+"/resetpassword?userid=" + user.Id + "&code=" + code;
+                await UserManager.SendEmailAsync(user.Id, "Reset Password",
+            "Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
+
+                return Ok();
+            }
+
+            // If we got this far, something failed, redisplay form
+            return BadRequest(ModelState);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("ResetPassword")]
+        public async Task<IHttpActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var user = await UserManager.FindByIdAsync(model.UserId);
+            if (user == null)
+            {
+                // Don't reveal that the user does not exist
+                return Ok();
+            }
+            var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+            if (result.Succeeded)
+            {
+                return Ok();
+            }
+            return Ok();
+        }
+
+
 
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]
@@ -381,7 +461,7 @@ namespace APIService.Controllers
             result = await UserManager.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
             {
-                return GetErrorResult(result); 
+                return GetErrorResult(result);
             }
             return Ok();
         }

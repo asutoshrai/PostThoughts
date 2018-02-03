@@ -16,6 +16,24 @@ export class UserService {
         .map((response: Response) => response);
     }
 
+    forgotPassword(user: User) {
+        let body= {'Email':''+user.email+''};
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });        
+
+        return this.http.post('http://localhost:11583/api/account/ForgotPassword', body, options)
+        .map((response: Response) => response);
+    }
+
+    resetPassword(userid:string,code:string,password:string) {
+        let body= {'UserId':''+userid+'','Code':''+code+'','Password':''+password+''};
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });        
+
+        return this.http.post('http://localhost:11583/api/account/ResetPassword', body, options)
+        .map((response: Response) => response);
+    }
+
     // private helper methods
 
     private jwt() {

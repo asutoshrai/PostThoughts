@@ -7,6 +7,8 @@ import { AuthGuard } from './_guards/index';
 import { StoryComponent } from "./story/index";
 import { ContactComponent } from "./contact/index";
 import { AboutComponent } from "./about/index";
+import { ForgotPasswordComponent } from './forgotpassword/index';
+import { ResetPasswordComponent } from './resetpassword/index';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -14,6 +16,8 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'about', component: AboutComponent },
     { path: 'contact', component: ContactComponent },
+    { path: 'forgotpassword', component: ForgotPasswordComponent },
+    { path: 'resetpassword', component: ResetPasswordComponent },
     { path: 'story', component: StoryComponent, canActivate: [AuthGuard] },
 
     // otherwise redirect to home

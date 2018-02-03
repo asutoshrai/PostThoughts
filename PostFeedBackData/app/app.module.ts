@@ -19,8 +19,10 @@ import { RegisterComponent } from './register/index';
 import { StoryComponent } from "./story/index";
 import { AboutComponent } from "./about/index";
 import { ContactComponent } from "./contact/index";
+import { ForgotPasswordComponent } from "./forgotpassword/index";
 import { StoryService } from "./_services/story.service";
 import { PagerService } from './_services/pager.service';
+import { ResetPasswordComponent } from './resetpassword/index';
 
 @NgModule({
     imports: [
@@ -37,7 +39,9 @@ import { PagerService } from './_services/pager.service';
         RegisterComponent,
         StoryComponent,
         AboutComponent,
-        ContactComponent
+        ContactComponent,
+        ForgotPasswordComponent,
+        ResetPasswordComponent
     ],
     providers: [
         AuthGuard,
@@ -45,7 +49,7 @@ import { PagerService } from './_services/pager.service';
         AuthenticationService,
         UserService,
         StoryService,
-        PagerService
+        PagerService,
     ],
     bootstrap: [AppComponent]
 })

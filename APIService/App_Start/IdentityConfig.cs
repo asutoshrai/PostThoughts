@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using APIService.Models;
 using APIService.Persistence;
+using APIService.Infrastructure;
 
 namespace APIService
 {
@@ -35,6 +36,9 @@ namespace APIService
                 RequireLowercase = true,
                 RequireUppercase = true,
             };
+
+            manager.EmailService = new EmailService();
+
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {

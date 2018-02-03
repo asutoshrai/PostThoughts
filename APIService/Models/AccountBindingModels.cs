@@ -96,5 +96,18 @@ namespace APIService.Models
         [Display(Name = "Confirm new password")]
         [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+    }
+
+    public class ForgotPasswordViewModel
+    {
+        public string Email { get; set; }
+    }
+
+    public class ResetPasswordViewModel
+    {
+        public string Code { get; set; }
+        public string UserId { get; set; }
+        public string Password { get; set; }
     }
 }

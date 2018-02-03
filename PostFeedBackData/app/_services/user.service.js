@@ -21,6 +21,20 @@ var UserService = (function () {
         return this.http.post('http://localhost:11583/api/account/register', body, options)
             .map(function (response) { return response; });
     };
+    UserService.prototype.forgotPassword = function (user) {
+        var body = { 'Email': '' + user.email + '' };
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post('http://localhost:11583/api/account/ForgotPassword', body, options)
+            .map(function (response) { return response; });
+    };
+    UserService.prototype.resetPassword = function (userid, code, password) {
+        var body = { 'UserId': '' + userid + '', 'Code': '' + code + '', 'Password': '' + password + '' };
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post('http://localhost:11583/api/account/ResetPassword', body, options)
+            .map(function (response) { return response; });
+    };
     // private helper methods
     UserService.prototype.jwt = function () {
         // create authorization header with jwt token
