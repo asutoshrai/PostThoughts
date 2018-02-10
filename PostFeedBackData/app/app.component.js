@@ -11,6 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var index_1 = require("./_services/index");
 var router_1 = require("@angular/router");
+// declare var jquery:any;
+// declare var $ :any;
 var AppComponent = (function () {
     function AppComponent(auth, router, userService) {
         this.auth = auth;
@@ -20,6 +22,9 @@ var AppComponent = (function () {
             this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         }
     }
+    AppComponent.prototype.ngOnInit = function () {
+        //
+    };
     AppComponent.prototype.logout = function () {
         this.auth.logout();
         this.router.navigate(['/login']);
@@ -30,7 +35,7 @@ AppComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         selector: 'app',
-        templateUrl: 'app.component.html'
+        templateUrl: 'app.component.html',
     }),
     __metadata("design:paramtypes", [index_1.AuthenticationService, router_1.Router, index_1.UserService])
 ], AppComponent);

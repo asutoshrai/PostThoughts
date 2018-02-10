@@ -37,7 +37,9 @@
     "angular2-text-equality-validator": "^2.0.0",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
+    "ngx-quill": "^1.6.0",
     "rxjs": "5.0.1",
+    "save": "^2.3.2",
     "systemjs": "0.19.40",
     "underscore": "^1.8.3",
     "zone.js": "^0.8.4"
