@@ -2,14 +2,16 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthenticationService {
+    private baseUrl = environment.apiBaseUrl;
     constructor(private http: Http) { }
 
     login(username: string, password: string) {
 
-        let url = "http://localhost:11583/token";
+        let url = this.baseUrl+"/token";
         let body = "username=" + username + "&password=" + password + "&grant_type=password";
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let options = new RequestOptions({ headers: headers });        

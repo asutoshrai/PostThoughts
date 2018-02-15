@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { environment } from '../../environments/environment';
 
 import { User } from '../_models/index';
 
 @Injectable()
 export class UserService {
+    private baseUrl = environment.apiBaseUrl;
     constructor(private http: Http) { }
 
     create(user: User) {
@@ -12,7 +14,7 @@ export class UserService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });        
 
-        return this.http.post('http://localhost:11583/api/account/register', body, options)
+        return this.http.post(this.baseUrl+'api/account/register', body, options)
         .map((response: Response) => response);
     }
 
@@ -21,7 +23,7 @@ export class UserService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });        
 
-        return this.http.post('http://localhost:11583/api/account/ForgotPassword', body, options)
+        return this.http.post(this.baseUrl+'api/account/ForgotPassword', body, options)
         .map((response: Response) => response);
     }
 
@@ -30,7 +32,7 @@ export class UserService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });        
 
-        return this.http.post('http://localhost:11583/api/account/ResetPassword', body, options)
+        return this.http.post(this.baseUrl+'api/account/ResetPassword', body, options)
         .map((response: Response) => response);
     }
 
@@ -39,7 +41,7 @@ export class UserService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });        
 
-        return this.http.post('http://localhost:11583/api/account/ConfirmEmail', body, options)
+        return this.http.post(this.baseUrl+'api/account/ConfirmEmail', body, options)
         .map((response: Response) => response);
     }
 

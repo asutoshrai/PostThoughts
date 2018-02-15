@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   }
     currentUser: CurrentUser;
   
-    constructor(private auth: AuthenticationService, private router: Router,private userService: UserService) {
+    constructor(public auth: AuthenticationService, private router: Router,private userService: UserService) {
       if(auth.isLoggedIn()){
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));}
       

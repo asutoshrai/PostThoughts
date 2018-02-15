@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
-
 import { Story, StoryModel } from '../_models/story';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class StoryService {
+    private baseUrl = environment.apiBaseUrl;
     constructor(private http: Http) { }
 
     create(story: Story) {
@@ -14,7 +15,7 @@ export class StoryService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = this.tokenHeader();        
 
-        return this.http.post('http://localhost:11583/api/feedback', body, options)
+        return this.http.post(this.baseUrl+'api/feedback', body, options)
         .map((response: Response) => response);
     }
 
@@ -23,7 +24,7 @@ export class StoryService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = this.tokenHeader();        
 
-        return this.http.get('http://localhost:11583/api/feedback?currentPage='+currentPage+'&maxItems='+pageSize+'', options)
+        return this.http.get(this.baseUrl+'api/feedback?currentPage='+currentPage+'&maxItems='+pageSize+'', options)
         .map((response:Response)=><StoryModel>response.json())
     }
 

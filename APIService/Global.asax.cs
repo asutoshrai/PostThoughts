@@ -19,16 +19,21 @@ namespace APIService
             //RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
 
-        protected void Application_BeginRequest(Object sender, EventArgs e)
+       protected void Application_BeginRequest(Object sender, EventArgs e)
         {
-            //HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
+            //    //HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
+            //    if (HttpContext.Current.Request.HttpMethod == "OPTIONS")
+            //    {
+            //        HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
+            //        HttpContext.Current.Response.AddHeader("Cache-Control", "no-cache");
+            //        HttpContext.Current.Response.AddHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+            //        HttpContext.Current.Response.AddHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+            //        HttpContext.Current.Response.AddHeader("Access-Control-Max-Age", "1728000");
+            //        HttpContext.Current.Response.End();
+            //    }
             if (HttpContext.Current.Request.HttpMethod == "OPTIONS")
             {
-                HttpContext.Current.Response.AddHeader("Cache-Control", "no-cache");
-                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-                HttpContext.Current.Response.AddHeader("Access-Control-Max-Age", "1728000");
-                HttpContext.Current.Response.End();
+                HttpContext.Current.Response.Flush();
             }
         }
     }

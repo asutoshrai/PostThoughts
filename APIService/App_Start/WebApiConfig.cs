@@ -6,6 +6,7 @@ using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 using System.Net.Http.Formatting;
+using System.Web.Http.Cors;
 
 namespace APIService
 {
@@ -21,6 +22,9 @@ namespace APIService
             var formatter = new JsonMediaTypeFormatter();
             config.Formatters.Insert(0, formatter);
 
+            //var cors = new EnableCorsAttribute("*", "*", "*");
+            //config.EnableCors(cors);
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 
@@ -29,6 +33,7 @@ namespace APIService
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+          
         }
     }
 }
