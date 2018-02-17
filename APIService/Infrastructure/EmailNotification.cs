@@ -22,6 +22,8 @@ namespace APIService.Infrastructure
             var passoword = ConfigurationManager.AppSettings["email.password"];
             var host = ConfigurationManager.AppSettings["email.host"];
             var port = ConfigurationManager.AppSettings["email.port"];
+            var isSecure = ConfigurationManager.AppSettings["email.isSecure"];
+
             using (MailMessage mm = new MailMessage(from, to))
             {
                 mm.Subject = subject;
@@ -29,7 +31,7 @@ namespace APIService.Infrastructure
                 mm.IsBodyHtml = true;
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = host;
-                smtp.EnableSsl = true;
+                smtp.EnableSsl = Convert.ToBoolean(isSecure);
                 NetworkCredential NetworkCred = new NetworkCredential(from, passoword);
                 smtp.UseDefaultCredentials = true;
                 smtp.Credentials = NetworkCred;
@@ -47,6 +49,7 @@ namespace APIService.Infrastructure
             var password = ConfigurationManager.AppSettings["email.password"];
             var host = ConfigurationManager.AppSettings["email.host"];
             var port = ConfigurationManager.AppSettings["email.port"];
+            var isSecure = ConfigurationManager.AppSettings["email.isSecure"];
 
             //create the mail message 
             MailMessage mail = new MailMessage();
@@ -58,12 +61,14 @@ namespace APIService.Infrastructure
             //set the content 
             mail.Subject = message.Subject;
             mail.Body = message.Body;
+            mail.IsBodyHtml = true;
             //send the message 
             SmtpClient smtp = new SmtpClient(host);
 
             //IMPORANT:  Your smtp login email MUST be same as your FROM address. 
             NetworkCredential Credentials = new NetworkCredential(from, password);
             smtp.Credentials = Credentials;
+            smtp.EnableSsl =Convert.ToBoolean(isSecure);
             smtp.Port = Convert.ToInt32(port);
             smtp.Timeout = 360000;
             smtp.Send(mail);

@@ -17,11 +17,16 @@ export class AppComponent implements OnInit {
      //
   }
     currentUser: CurrentUser;
-  
+    collapsed = true;
+
     constructor(public auth: AuthenticationService, private router: Router,private userService: UserService) {
       if(auth.isLoggedIn()){
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));}
       
+    }
+
+    toggleCollapsed(): void {
+      this.collapsed = !this.collapsed;
     }
   
     logout() {

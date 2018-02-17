@@ -1,18 +1,19 @@
  <!-- Navigation -->
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="#">STUDENTTALK</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" style="color:#39bdcc" href="#">STUDENTTALK</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" style="cursor:pointer;"
+    data-target="#navbarResponsive" aria-controls="navbarResponsive" 
+    aria-expanded="false" aria-label="Toggle navigation" (click)="toggleCollapsed()">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse nav.center">
+    <div class="collapse navbar-collapse nav.center" [ngClass]="{'collapse': collapsed,'nav.center':true,'navbar-collapse': true}" >
       <ul class="navbar-nav ml-auto">
           <li class="nav-item" style="color: white;" >Welcome | <span>{{auth.getUserName()}}</span>
-
           </li>
       </ul>
     </div>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
+    <div id="navbarResponsive" [ngClass]="{'collapse': collapsed, 'navbar-collapse': true}">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a class="nav-link" href="/home">Home
@@ -54,23 +55,21 @@
 <footer class="footer-bs" >
   <div class="container">
     <div class="row">
-      <div class="col-md-3 footer-brand animated fadeInLeft">
-          <h2>STUDENTTALK</h2>
+      <div class="col-md-3 col-sm-4 footer-brand animated fadeInLeft">
+          <h2 style="color:#39bdcc">STUDENTTALK</h2>
             <p>Connect with student and share their views about their life.</p>
             <p>© 2018, All rights reserved</p>
         </div>
-      <div class="col-md-4 footer-nav animated fadeInUp">
-          <div class="col-md-6">
-                <ul class="list">
+      <div class="col-md-4 col-sm-4 footer-social animated fadeInDown">
+                <ul>
                     <li><a href="/about">About Us</a></li>
                     <li><a href="/contact">Contacts</a></li>
                     <li><a href="#">Terms & Condition</a></li>
                     <li><a href="#">Privacy Policy</a></li>
                 </ul>
-            </div>
         </div>
-      <div class="col-md-2 footer-social animated fadeInDown">
-          <h4>Follow Us</h4>
+      <div class="col-md-2 col-sm-4 footer-social animated fadeInDown">
+          <h4 style="color:#39bdcc" >Follow Us</h4>
           <ul>
               <li><a href="#">Facebook</a></li>
               <li><a href="#">Twitter</a></li>
