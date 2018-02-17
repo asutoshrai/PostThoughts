@@ -12,13 +12,13 @@ import { routing }        from './app.routing';
 
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
-import { AlertService, AuthenticationService, UserService } from './_services/index';
+import { AlertService, AuthenticationService, UserService, ContactUsService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { StoryComponent } from "./story/index";
 import { AboutComponent } from "./about/index";
-import { ContactComponent } from "./contact/index";
+import { ContactUsComponent } from "./contact/index";
 import { ForgotPasswordComponent } from "./forgotpassword/index";
 import { StoryService } from "./_services/story.service";
 import { PagerService } from './_services/pager.service';
@@ -40,7 +40,7 @@ import { ConfirmEmailComponent } from './confirmemail/index';
         RegisterComponent,
         StoryComponent,
         AboutComponent,
-        ContactComponent,
+        ContactUsComponent,
         ForgotPasswordComponent,
         ResetPasswordComponent,
         ConfirmEmailComponent
@@ -52,6 +52,7 @@ import { ConfirmEmailComponent } from './confirmemail/index';
         UserService,
         StoryService,
         PagerService,
+        ContactUsService
     ],
     bootstrap: [AppComponent]
 })

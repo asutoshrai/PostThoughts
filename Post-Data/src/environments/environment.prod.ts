@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiBaseUrl:"http://localhost:8083/"
+  apiBaseUrl:"http://selflearn-001-site3.atempurl.com/",
+  /*apiBaseUrl:"http://localhost:8083/" */
 };

@@ -16,7 +16,7 @@ namespace APIService.Infrastructure
 {
     public class EmailNotification
     {
-        public void Send(string to, string subject, string body, string senderPassword)
+        public void Send(string to, string subject, string body)
         {
             var from = ConfigurationManager.AppSettings["email.from"];
             var passoword = ConfigurationManager.AppSettings["email.password"];
@@ -34,7 +34,7 @@ namespace APIService.Infrastructure
                 smtp.UseDefaultCredentials = true;
                 smtp.Credentials = NetworkCred;
                 smtp.Port = Convert.ToInt32(port);
-                smtp.SendAsync(mm, "");
+                smtp.Send(mm);
             }
         }
     }
@@ -44,30 +44,30 @@ namespace APIService.Infrastructure
         public Task SendAsync(IdentityMessage message)
         {
             var from = ConfigurationManager.AppSettings["email.from"];
-            var passoword = ConfigurationManager.AppSettings["email.password"];
+            var password = ConfigurationManager.AppSettings["email.password"];
             var host = ConfigurationManager.AppSettings["email.host"];
             var port = ConfigurationManager.AppSettings["email.port"];
 
-            AlternateView htmlView = AlternateView.CreateAlternateViewFromString(message.Body, new ContentType("text/html"));
+            //create the mail message 
+            MailMessage mail = new MailMessage();
 
-            using (MailMessage mm = new MailMessage(
-                new MailAddress(from, "Egile Network"),
-                new MailAddress(message.Destination) ))
-            {
-                mm.Subject = message.Subject;
-                mm.AlternateViews.Add(htmlView);
-                mm.IsBodyHtml = true;
-                SmtpClient smtp = new SmtpClient();
-                smtp.Host = host;
-                smtp.EnableSsl = true;
-                NetworkCredential NetworkCred = new NetworkCredential(from, passoword);
-                smtp.UseDefaultCredentials = true;
-                smtp.Credentials = NetworkCred;
-                smtp.Port = Convert.ToInt32(port);
-                smtp.Send(mm);
-                return Task.FromResult(1);
-            }
+            //set the addresses 
+            mail.From = new MailAddress(from); //IMPORTANT: This must be same as your smtp authentication address.
+            mail.To.Add(message.Destination);
 
+            //set the content 
+            mail.Subject = message.Subject;
+            mail.Body = message.Body;
+            //send the message 
+            SmtpClient smtp = new SmtpClient(host);
+
+            //IMPORANT:  Your smtp login email MUST be same as your FROM address. 
+            NetworkCredential Credentials = new NetworkCredential(from, password);
+            smtp.Credentials = Credentials;
+            smtp.Port = Convert.ToInt32(port);
+            smtp.Timeout = 360000;
+            smtp.Send(mail);
+            return Task.FromResult(1);
         }
     }
 }

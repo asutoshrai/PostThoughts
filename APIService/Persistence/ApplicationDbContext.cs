@@ -15,6 +15,7 @@ namespace APIService.Persistence
         }
 
         public IDbSet<FeedBack> FeedBacks { get; set; }
+        public IDbSet<Contact> Contacts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

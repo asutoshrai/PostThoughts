@@ -31,9 +31,14 @@ namespace APIService
             //        HttpContext.Current.Response.AddHeader("Access-Control-Max-Age", "1728000");
             //        HttpContext.Current.Response.End();
             //    }
-            if (HttpContext.Current.Request.HttpMethod == "OPTIONS")
+            //if (HttpContext.Current.Request.HttpMethod == "OPTIONS")
+            //{
+            //    HttpContext.Current.Response.Flush();
+            //}
+
+            if (Request.Headers.AllKeys.Contains("Origin") && Request.HttpMethod == "OPTIONS")
             {
-                HttpContext.Current.Response.Flush();
+                Response.Flush();
             }
         }
     }

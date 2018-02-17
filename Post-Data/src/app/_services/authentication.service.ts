@@ -11,7 +11,7 @@ export class AuthenticationService {
 
     login(username: string, password: string) {
 
-        let url = this.baseUrl+"/token";
+        let url = this.baseUrl+"api/token";
         let body = "username=" + username + "&password=" + password + "&grant_type=password";
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let options = new RequestOptions({ headers: headers });        

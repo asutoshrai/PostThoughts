@@ -204,8 +204,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ContactUsController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
+    <Compile Include="DAL\ContactManager.cs" />
     <Compile Include="DAL\FeedBackManager.cs" />
+    <Compile Include="Domain\Contact.cs" />
     <Compile Include="Domain\Feedback.cs" />
     <Compile Include="Domain\UserInfo.cs" />
     <Compile Include="Extensions\IdentityExt.cs" />
@@ -226,6 +229,10 @@
     <Compile Include="Migrations\201801191903494_IPAddress.Designer.cs">
       <DependentUpon>201801191903494_IPAddress.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802171227219_ContactDomain.cs" />
+    <Compile Include="Migrations\201802171227219_ContactDomain.Designer.cs">
+      <DependentUpon>201802171227219_ContactDomain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -238,12 +245,12 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FiddlerCalls\GetData.txt" />
-    <Content Include="FiddlerCalls\PostData.txt" />
-    <Content Include="FiddlerCalls\LoginUser.txt" />
-    <Content Include="FiddlerCalls\RegisterUser.txt" />
+    <Content Include="App_Data\FiddlerCalls\GetData.txt" />
+    <Content Include="App_Data\FiddlerCalls\PostData.txt" />
+    <Content Include="App_Data\FiddlerCalls\LoginUser.txt" />
+    <Content Include="App_Data\FiddlerCalls\RegisterUser.txt" />
     <Content Include="Global.asax" />
-    <Content Include="SqlScripts\IdentityTables.sql" />
+    <Content Include="App_Data\SqlScripts\IdentityTables.sql" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -254,9 +261,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
@@ -273,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801191903494_IPAddress.resx">
       <DependentUpon>201801191903494_IPAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802171227219_ContactDomain.resx">
+      <DependentUpon>201802171227219_ContactDomain.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -328,10 +336,8 @@
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" />
+  <Target Name="BeforeBuild" Condition="'$(PublishProfileName)' == '' And '$(WebPublishProfileFile)' == ''">
+    <TransformXml Source="Web.config" Transform="Web.$(Configuration).config" Destination="Web.config" />
   </Target>
-  <Target Name="AfterBuild">
-  </Target> -->
 </Project>

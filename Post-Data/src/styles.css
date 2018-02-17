@@ -261,6 +261,11 @@ a{
   color: white;
 }
 
+.btn{
+ cursor: hand; 
+ cursor: pointer;
+}
+
 /*RICH TEXT COTNROL*/
 
 

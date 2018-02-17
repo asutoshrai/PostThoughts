@@ -23,6 +23,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Post-Data", "Post-Data\", "
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "64324"
+		SlnRelativePath = "Post-Data\"
 	EndProjectSection
 EndProject
 Global
