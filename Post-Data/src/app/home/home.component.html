@@ -22,8 +22,7 @@
         </li>
     </ul>
 
-   <div class="jumbotron ribbon" *ngFor="let story of pagedItems">
-        <span class="fold bottom right"></span>
+   <div class="ribbon" *ngFor="let story of pagedItems">
    <p>{{story.Data}}</p>
    <div style="font-style:italic;"><span style="font-weight:bold;"> Posted by : </span> {{story.UserId}} <span style="font-weight:bold;"> Created On : </span> {{story.CreatedOn}} </div>   </div>
 

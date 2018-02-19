@@ -160,82 +160,51 @@ input::-webkit-input-placeholder {
  .pagination li a{
    height: 10px;
    width: 10px;
-   background-color:#DE1B1B;
-   color:white;
+   background-color:#39bdcc;
+   color:black;
    margin-left: 5px;
    padding: 5px;
-   border-radius: 20%;
-   border-color:white;
+   border-radius:5px;
+   border-color:black;
    border-width: 2px;
 }
 
 .pagination li a.active{
     height: 10px;
     width: 10px;
-    background-color: black;
+    background-color: #dc3545;
     color: white;
     margin-left: 5px;
     padding: 5px;
-    border-radius: 20%;
-    border-color:white;
+    border-radius: 5px;
+    border-color:black;
     border-width: 2px;
  }
 
  .pagination li a.disabled{
     height: 10px;
     width: 10px;
-    background-color:#DE1B1B;
+    background-color:#39bdcc;
     color: darkgray;
     margin-left: 5px;
     padding: 5px;
-    border-radius: 20%;
+    border-radius: 5px;
     border-color:white;
     border-width: 2px;
  }
 
 /*rounded corner articles with folded corner */
 .ribbon {
-   fill: rgba(20, 235, 206, 0.726);
+   fill: rgba(20, 235, 206, 0.849);
     position: relative;
     line-height: 40px;
     padding: 20px 20px;
     font-family: helvetica;
-    color: rgb(48, 46, 46);
+    color: rgb(20, 19, 19);
     font-weight: 100;
-    margin-bottom: 20px;
-    background-color: rgba(20, 235, 206, 0.726);
-  border-radius: 2%;
-  }
-  
-  .fold {
-    position: absolute;
-    border-style: solid;
-  }
-  .fold.top {
-    top: 0;
-  }
-  .fold.top.left {
-    left: 0;
-    border-width: 12px 12px 0  0;
-    border-color: #EEEBDC #EEEBDC rgba(20, 235, 206, 0.726) #EEEBDC;
-  }
-  .fold.top.right {
-    right: 0;
-    border-width: 0 12px 12px  0;
-    border-color: #EEEBDC #EEEBDC rgba(20, 235, 206, 0.726) #EEEBDC;
-  }
-  .fold.bottom {
-    bottom: 0;
-  }
-  .fold.bottom.left {
-    left: 0;
-    border-width: 0 12px 12px 0;
-    border-color: #EEEBDC rgba(20, 235, 206, 0.726) #EEEBDC #EEEBDC;
-  }
-  .fold.bottom.right {
-    right: 0;
-    border-width: 12px 12px 0  0;
-    border-color: rgba(20, 235, 206, 0.726) #EEEBDC #EEEBDC #EEEBDC;
+    margin-bottom: 10px;
+    background-color: rgba(12, 192, 168, 0.726);
+    border-radius: 5px;
   }
   
   /***
@@ -263,7 +232,11 @@ a{
  cursor: pointer;
 }
 
-/*RICH TEXT COTNROL*/
+.boldStyle{
+ font-weight: bold; 
+}
 
-
+.logoStyle{
+  color:#39bdcc !important; 
+}
 

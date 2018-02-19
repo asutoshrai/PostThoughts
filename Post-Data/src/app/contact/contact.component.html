@@ -2,7 +2,7 @@
         <h2 style="margin-bottom: 30px;">Contact us</h2>
         <h6 style="font-weight: bold;margin-bottom:20px;">We want to hear from you! For any concerns/queries please send an email to <a style="color:blue" href="mailto:admin@kindacts.in?Subject=KindActs:Query">admin@kindacts.in</a></h6>
        <div *ngIf="auth.isLoggedIn()">
-            <h6 style="font-weight: bold;margin-bottom:20px;">Alternatively you can fill below form and submit</h6>
+            <h6 style="font-weight: bold;margin-bottom:20px;">Alternatively you can post your thoughts below</h6>
             <form name="form"  (ngSubmit)="f.form.valid && postData()" #f="ngForm" novalidate>
                     <div class="form-group"  [ngClass]="{ 'has-error': f.submitted}">
                          <textarea class="form-control"  name="data" rows="5" [(ngModel)]="model.data"
